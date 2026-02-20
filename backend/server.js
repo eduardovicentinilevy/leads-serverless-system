@@ -1,4 +1,3 @@
-// ARQUIVO: backend/server.js
 const express = require('express');
 const cors = require('cors');
 const db = require('./database');
@@ -18,7 +17,6 @@ const processLeadInBackground = async (leadId, email) => {
 };
 
 app.post('/api/leads', (req, res) => {
-    // Agora recebemos os dados de endereço do frontend
     const { nome, email, cpf, cep, rua, bairro, cidade, uf } = req.body;
     
     const nomeLimpo = nome.trim();
@@ -29,7 +27,6 @@ app.post('/api/leads', (req, res) => {
     db.serialize(() => {
         db.run('BEGIN TRANSACTION');
 
-        // Query atualizada com os novos campos
         const insertLead = `INSERT INTO leads (nome, email, cpf, cep, rua, bairro, cidade, uf) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
         
         db.run(insertLead, [nomeLimpo, emailLimpo, cpfLimpo, cepLimpo, rua, bairro, cidade, uf], function(err) {
