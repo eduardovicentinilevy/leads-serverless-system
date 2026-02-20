@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap");
+
+:root {
+  /* Paleta Violão */
+  --madeira-escura: #2c1e16;
+  --madeira-media: #5c3a21;
+  --madeira-clara: #8b5a33;
+  --bege-tampo: #f4ead4;
+  --dourado-tarraxa: #d4af37;
+  --branco-fundo: #fdfbf7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: var(--branco-fundo);
+  color: var(--madeira-escura);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  background-color: var(--bege-tampo);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(44, 30, 22, 0.15);
+  width: 100%;
+  max-width: 420px;
+  border-top: 5px solid var(--madeira-media);
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 20px auto;
+  max-width: 140px;
+  height: auto;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: var(--madeira-escura);
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--branco-fundo);
+  border: 1px solid var(--madeira-clara);
+  border-radius: 6px;
+  transition: 0.3s;
+  padding: 0 12px;
+}
+
+.input-wrapper:focus-within {
+  border-color: var(--dourado-tarraxa);
+  box-shadow: 0 0 5px rgba(212, 175, 55, 0.4);
+}
+
+.input-icon {
+  color: var(--madeira-clara);
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  outline: none;
+  color: var(--madeira-escura);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--madeira-media);
+  color: var(--branco-fundo);
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+button:hover:not(:disabled) {
+  background-color: var(--madeira-escura);
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.mensagem {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 20px;
+}
+
+.sucesso { color: var(--madeira-clara); }
+.erro { color: #b30000; }
