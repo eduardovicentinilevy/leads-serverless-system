@@ -1,4 +1,3 @@
-// ARQUIVO: frontend/src/App.jsx
 import { useState } from 'react';
 import { 
   FaUser, 
@@ -7,7 +6,8 @@ import {
   FaMapMarkerAlt, 
   FaRoad, 
   FaMap, 
-  FaCity 
+  FaCity,
+  FaUserPlus
 } from 'react-icons/fa';
 import './index.css';
 
@@ -26,17 +26,13 @@ function App() {
   const [status, setStatus] = useState({ tipo: '', texto: '' });
   const [loading, setLoading] = useState(false);
 
-  // Atualiza os dados conforme o usuário digita
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Consome a API do ViaCEP quando o usuário sai do campo de CEP
   const buscarCep = async (e) => {
     const cepLimpo = e.target.value.replace(/\D/g, '');
-    
-    // Só busca se o CEP tiver exatamente 8 números
     if (cepLimpo.length !== 8) return;
 
     setStatus({ tipo: '', texto: 'Buscando endereço...' });
@@ -50,7 +46,6 @@ function App() {
         setFormData(prev => ({ ...prev, rua: '', bairro: '', cidade: '', uf: '' }));
       } else {
         setStatus({ tipo: '', texto: '' });
-        // Atualiza o estado com os dados que vieram da API
         setFormData(prev => ({
           ...prev,
           rua: data.logradouro,
@@ -80,7 +75,6 @@ function App() {
 
       if (response.ok || response.status === 202) {
         setStatus({ tipo: 'sucesso', texto: 'Sucesso! Seus dados foram recebidos.' });
-        // Limpa o formulário todo após sucesso
         setFormData({ nome: '', email: '', cpf: '', cep: '', rua: '', bairro: '', cidade: '', uf: '' }); 
       } else {
         setStatus({ tipo: 'erro', texto: data.erro || 'Ocorreu um erro.' });
@@ -94,7 +88,11 @@ function App() {
 
   return (
     <div className="container">
-      <img src="/logo.png" alt="Logo do Sistema" className="logo" onError={(e) => e.target.style.display = 'none'} />
+      
+      {/* Logo atualizado usando React Icons */}
+      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <FaUserPlus style={{ fontSize: '64px', color: 'var(--madeira-escura)' }} />
+      </div>
       
       <h2>Cadastro VIP</h2>
       
@@ -141,12 +139,11 @@ function App() {
               placeholder="00000-000" maxLength="9" 
               value={formData.cep} 
               onChange={handleChange} 
-              onBlur={buscarCep} /* Dispara a busca ao sair do campo */
+              onBlur={buscarCep}
             />
           </div>
         </div>
 
-        {/* Campos de endereço preenchidos automaticamente */}
         {formData.rua && (
           <>
             <div className="input-group">

@@ -37,13 +37,6 @@ body {
   border-top: 5px solid var(--madeira-media);
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 20px auto;
-  max-width: 140px;
-  height: auto;
-}
-
 h2 {
   text-align: center;
   margin-bottom: 24px;
